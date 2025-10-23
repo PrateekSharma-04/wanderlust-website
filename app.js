@@ -83,6 +83,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// ===== Add root redirect here =====
+app.get("/", (req, res) => {
+    res.redirect(301, "/listings"); // 301 = permanent redirect
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
